@@ -1,26 +1,35 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { Component } from 'react';
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+  constructor(props) {
+    super(props)
+
+    this.state = {
+      negative: 0,
+      counter: 0,
+      msg: 'Counter can not be negative'
+    }
+  }
+
+  render() {
+    return (
+      <div data-test='component-app'>
+        <h1 data-test='counter-display'>The counter is currently: {this.state.counter}</h1>
+        {this.state.negative > -1? <p></p>: <p data-test='error-message'>{this.state.msg}</p>}
+        <button
+          onClick={() => this.setState({ counter: this.state.counter + 1, negative: 0 })}
+          data-test='increment-button'
+        > Increment </button>
+
+        <button
+          onClick={() => this.state.counter === 0 ? this.setState({ counter: 0, negative: -1 }) : this.setState({ counter: this.state.counter - 1 })}
+          data-test='decrement-button'
+        > Decrement </button>
+
+      </div>
+    );
+  }
 }
 
 export default App;
