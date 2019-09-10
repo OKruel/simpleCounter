@@ -3,7 +3,6 @@ import Enzyme, {shallow} from 'enzyme'
 import EnzymeAdapter from 'enzyme-adapter-react-16'
 
 import App from './App';
-import { wrap } from 'module';
 
 Enzyme.configure({adapter: new EnzymeAdapter()})
 
